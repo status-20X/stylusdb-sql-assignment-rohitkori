@@ -34,6 +34,7 @@ function parseQuery(query) {
   return {
     fields: parsedFields,
     table: table.trim(),
+    whereClause: whereClauses,
   };
 }
 
