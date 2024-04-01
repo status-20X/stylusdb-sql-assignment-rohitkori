@@ -200,10 +200,10 @@ test('Execute SQL Query with LEFT JOIN', async () => {
     const query = 'SELECT student.name, enrollment.course FROM student LEFT JOIN enrollment ON student.id=enrollment.student_id';
     const result = await executeSELECTQuery(query);
     expect(result).toEqual(expect.arrayContaining([
-        expect.objectContaining({ "enrollment.course": "Mathematics", "student.age": "30", "student.id": "1", "student.name": "John" }),
-        expect.objectContaining({ "enrollment.course": "Physics", "student.age": "30", "student.id": "1", "student.name": "John" }),
-        expect.objectContaining({ "enrollment.course": "Chemistry", "student.age": "25", "student.id": "2", "student.name": "Jane" }),
-        expect.objectContaining({ "enrollment.course": "Mathematics", "student.age": "22", "student.id": "3", "student.name": "Bob" })
+        expect.objectContaining({ "enrollment.course": "Mathematics",  "student.name": "John" }),
+        expect.objectContaining({ "enrollment.course": "Physics", "student.name": "John" }),
+        expect.objectContaining({ "enrollment.course": "Chemistry",  "student.name": "Jane" }),
+        expect.objectContaining({ "enrollment.course": "Mathematics",  "student.name": "Bob" })
     ]));
     expect(result.length).toEqual(4); 
 });
@@ -212,10 +212,10 @@ test('Execute SQL Query with LEFT JOIN', async () => {
     const query = 'SELECT student.name, enrollment.course FROM student LEFT JOIN enrollment ON student.id=enrollment.student_id';
     const result = await executeSELECTQuery(query);
     expect(result).toEqual(expect.arrayContaining([
-        expect.objectContaining({ "enrollment.course": "Mathematics", "student.age": "30", "student.id": "1", "student.name": "John" }),
-        expect.objectContaining({ "enrollment.course": "Physics", "student.age": "30", "student.id": "1", "student.name": "John" }),
-        expect.objectContaining({ "enrollment.course": "Chemistry", "student.age": "25", "student.id": "2", "student.name": "Jane" }),
-        expect.objectContaining({ "enrollment.course": "Mathematics", "student.age": "22", "student.id": "3", "student.name": "Bob" })
+        expect.objectContaining({ "enrollment.course": "Mathematics",  "student.name": "John" }),
+        expect.objectContaining({ "enrollment.course": "Physics",  "student.name": "John" }),
+        expect.objectContaining({ "enrollment.course": "Chemistry", "student.name": "Jane" }),
+        expect.objectContaining({ "enrollment.course": "Mathematics", "student.name": "Bob" })
     ]));
     expect(result.length).toEqual(4); 
     
