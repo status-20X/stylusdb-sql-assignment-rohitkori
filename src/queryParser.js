@@ -73,7 +73,6 @@ function parseQuery(query) {
 
       // Extract JOIN information
     const { joinType, joinTable, joinCondition } = parseJoinClause(queryWithoutWhere);
-    console.log(joinType)
 
       const countDistinctRegex = /COUNT\((DISTINCT\s\((.*?)\))\)/gi;
       let countDistinctMatch;
@@ -116,17 +115,17 @@ function parseQuery(query) {
           fields: parsedFields,
           table: table.trim(),
           whereClauses,
-          // joinType,
+          joinType,
           joinTable,
           joinCondition,
-          // groupByFields,
-          // orderByFields,
-          // hasAggregateWithoutGroupBy,
-          // isApproximateCount,
-          // isCountDistinct,
-          // limit,
-          // distinctFields,
-          // isDistinct
+          groupByFields,
+          orderByFields,
+          hasAggregateWithoutGroupBy,
+        //   isApproximateCount,
+        //   isCountDistinct,
+          limit,
+        //   distinctFields,
+          isDistinct
       };
   } catch (error) {
       throw new Error(`Query parsing error: ${error.message}`);
@@ -156,13 +155,13 @@ function parseWhereClause(whereString) {
 }
 
 function parseJoinClause(query) {
-  console.log(query)
+  // console.log(query)
   const joinRegex = /\s(INNER|LEFT|RIGHT) JOIN\s(.+?)\sON\s([\w.]+)\s*=\s*([\w.]+)/i;
   const joinMatch = query.match(joinRegex);
-  console.log(joinMatch)
+  // console.log(joinMatch)
 
   if (joinMatch) {
-    console.log("join matching")
+    // console.log("join matching")
       return {
           joinType: joinMatch[1].trim(),
           joinTable: joinMatch[2].trim(),
@@ -249,4 +248,4 @@ function parseDeleteQuery(query) {
 }
 
 
-module.exports = parseQuery;
+module.exports = {parseQuery, parseJoinClause, parseInsertQuery, parseDeleteQuery };

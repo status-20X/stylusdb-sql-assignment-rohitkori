@@ -18,4 +18,9 @@ function readCSV(filePath) {
   });
 }
 
-module.exports = readCSV;
+async function writeCSV(filename, data) {
+  const csv = parse(data);
+  fs.writeFileSync(filename, csv);
+}
+
+module.exports = {readCSV, writeCSV};
